@@ -8,12 +8,11 @@ export default function PaymentForm() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
 
-  const { API_AFFILIATE } = process.env;
-  const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+  // const { API_AFFILIATE } = process.env;
+  // const proxyurl = 'https://cors-anywhere.herokuapp.com/';
 
   const getToken = async (code) => {
-    const res = await fetch(proxyurl + `${API_AFFILIATE}/oauth/token`, {
-    // const res = await fetch('/oauth/token', {
+    const res = await fetch('/oauth/token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,8 +38,7 @@ export default function PaymentForm() {
     e.preventDefault();
     setLoading(true);
 
-    const res = await fetch(proxyurl + `${API_AFFILIATE}/passwordless/start`, {
-    // const res = await fetch("/passwordless/start", {
+    const res = await fetch("/passwordless/start", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,10 +55,12 @@ export default function PaymentForm() {
       console.log('data', data);
       const { _id = '' } = data;
 
-      await getToken(_id);
+      // TODO: move getToken to another form page
+      // await getToken(_id);
     } else {
       setLoading(false);
       console.log('error');
+      console.log(res);
     }
 
     setLoading(false);
