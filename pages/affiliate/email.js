@@ -1,71 +1,40 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import styled from 'styled-components';
 import fetch from 'isomorphic-unfetch';
 
+import { UserContext } from '../../providers/UserProvider';
+
 export default function PaymentForm() {
   const router = useRouter();
+  const { updateEmail } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('');
-
-  // const { API_AFFILIATE } = process.env;
-  // const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-
-  const getToken = async (code) => {
-    const res = await fetch('/oauth/token', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        otp: code,
-        realm: 'email',
-        username: email,
-      }),
-    });
-
-    if (res.ok) {
-      setLoading(false);
-      const data = await res.json();
-      console.log('data from token request', data);
-    } else {
-      setLoading(false);
-      console.log('error');
-    }
-  };
+  const [userEmail, setUserEmail] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    const res = await fetch("/passwordless/start", {
+    const res = await fetch('/passwordless/start', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         connection: 'email',
-        email: email,
+        email: userEmail,
         send: 'code',
       }),
     });
 
     if (res.ok) {
-      const data = await res.json();
-      console.log('data', data);
-      const { _id = '' } = data;
-
-      // TODO: move getToken to another form page
-      // await getToken(_id);
+      setLoading(false);
+      updateEmail(userEmail);
+      router.push('/affiliate/confirm');
     } else {
       setLoading(false);
-      console.log('error');
-      console.log(res);
+      console.log('Error while sending email', res.statusText);
     }
-
-    setLoading(false);
-    // TODO: redirect from here
-    // document.location.href = signUpUrl;
   };
 
   return (
@@ -79,8 +48,8 @@ export default function PaymentForm() {
         <Input
           placeholder='Email Address'
           type='email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={userEmail}
+          onChange={(e) => setUserEmail(e.target.value)}
         />
         <Button>Continue</Button>
       </Form>

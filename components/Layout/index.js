@@ -9,19 +9,12 @@ function Layout({ children, router }) {
   const { pathname } = router;
 
   const withNoHeader = [
-    'store',
-    'complete',
-    'comission',
-    'card',
-    'affiliate/onboarding',
-    'affiliate/email',
+    'onboarding',
+    'email',
+    'confirm'
   ];
   const withNoFooter = [
-    'store',
-    'complete',
-    'comission',
-    'card',
-    'affiliate/payment',
+    'payment',
   ];
 
   const showHeaeder = withNoHeader

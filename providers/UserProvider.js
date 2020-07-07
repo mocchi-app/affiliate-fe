@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 
 export const UserContext = React.createContext({
   userToken: null,
+  userEmail: null,
 });
 
 export default function UserProvider({ children }) {
   const [userToken, setUserToken] = useState(null);
-  const [comission, setComission] = useState(null);
+  const [userEmail, setUserEmail] = useState(null);
 
   const updateUserToken = (token) => {
     setUserToken(token);
   };
 
-  const updateComission = (newValue) => {
-    setComission(newValue);
+  const updateEmail = (newValue) => {
+    console.log('UPDATED!!!')
+    setUserEmail(newValue);
   };
 
   return (
@@ -21,8 +23,8 @@ export default function UserProvider({ children }) {
       value={{
         userToken,
         updateUserToken,
-        comission,
-        updateComission,
+        userEmail,
+        updateEmail,
       }}
     >
       {children}
