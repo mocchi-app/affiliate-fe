@@ -1,0 +1,125 @@
+@import 'utils.module.scss';
+
+// Main Promo section
+.mainPromo {
+  display: flex;
+  width: 85%;
+  margin-left: auto;
+
+  .text {
+    min-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .sectionTitle,
+    .sectionActionText {
+      text-align: left;
+    }
+
+    .sectionActionText {
+      margin-bottom: 47px;
+    }
+
+    .sectionTitle {
+      margin: 0 0 31px 0;
+    }
+  }
+
+  .image {
+    min-width: 50%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+// How it works section
+.howItWorksSection {
+  padding-top: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .sectionTitle {
+    margin-top: 0;
+    margin-bottom: 117px;
+  }
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+
+  .card:nth-child(2) {
+    margin: 0 140px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imgContainer {
+    background: #f4f5f7;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  .desc {
+    width: 200px;
+    text-align: center;
+    margin: 32px 0 145px;
+    color: #1e2e4f;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
+
+// Get started section
+.getStartedSection {
+  background: #f0fdf3;
+  padding: 100px 0 232px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .sectionTitle {
+    margin: 0;
+  }
+
+  .sectionActionText {
+    margin: 32px 0;
+  }
+}
+
+.getStarted {
+  text-align: center;
+  width: 200px;
+  background: #00d489;
+  color: #fff;
+  box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 100px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 26px;
+  padding: 16px 45px;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

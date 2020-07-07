@@ -1,0 +1,46 @@
+.topHeader {
+  // max-width: 960px;
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 0 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.signInBtn {
+  margin: 0 42px 0 30px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
+  color: #1e2e4f;
+  text-decoration: none;
+}
+
+.signUpBtn {
+  background: #00d489;
+  border: 2px solid #fff;
+  font-size: 14px;
+  border-radius: 100px;
+  color: #fff;
+  padding: 7px 20px;
+}
+
+.searchField {
+  width: 197px;
+  height: 38px;
+  background: #f4f5f7;
+  border-radius: 100px;
+  border: none;
+  outline: none;
+  padding: 7px 20px;
+  color: #1e2e4f;
+  background-image: url('/images/search.png');
+  background-repeat: no-repeat;
+  background-position: 160px center;
+
+  &:active, &:focus {
+    background-image: none;
+  }
+}

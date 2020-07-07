@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://giftjet.co/sitemap.xml

@@ -1,0 +1,70 @@
+@import 'utils.module.scss';
+
+// Main Promo section
+.homeMainPromo {
+  background-image: url('/images/bg-card.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+  height: 635px;
+  display: flex;
+  flex-direction: column;
+
+  .sectionTitle {
+    padding-top: 165px;
+    margin: 0 0 10px 0;
+    color: #1e2e4f;
+  }
+
+  .sectionActionText {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 50px;
+    color: #979eac;
+  }
+
+  .inputContainer {
+    width: 400px;    
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .inputSearch {
+    width: 100%;
+    background: #f4f5f7;
+    color: #979EAC;
+    padding: 20px 80px 20px 27px;
+    border-radius: 60px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    line-height: 24px;
+    font-family: 'Noto Sans TC', sans-serif;
+
+    &::placeholder {
+      opacity: 1;
+      color: #979EAC;
+      font-size: 18px;
+    }
+  }
+
+  .image {
+    min-width: 50%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .searchIcon {
+    background: #42CB83;
+    padding: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    cursor: pointer;
+  }
+}
+
+.cardsSection {
+  display: flex;
+}
