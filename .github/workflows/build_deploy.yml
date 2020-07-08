@@ -23,13 +23,16 @@ jobs:
         run: npm run build
 
       - name: Build the Docker image
+        if: github.ref == 'refs/heads/master'
         run: docker login docker.pkg.github.com -u sausageRoll -p ${{ secrets.GITHUB_TOKEN }} && docker build . --file Dockerfile --tag docker.pkg.github.com/mocchi-app/affiliate-fe/affiliate-fe:latest
       - name: Publish the Docker image
+        if: github.ref == 'refs/heads/master'
         run: docker push docker.pkg.github.com/mocchi-app/affiliate-fe/affiliate-fe:latest
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
 
     steps:
       - uses: actions/checkout@v2
