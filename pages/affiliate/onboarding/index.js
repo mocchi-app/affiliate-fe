@@ -58,7 +58,8 @@ export default function Onboarding() {
           <Link href='/affiliate'>
             <Button className='cancel'>Cancel</Button>
           </Link>
-          <Link href='/affiliate'>
+          {/* TODO: add handleSave and redirect */}
+          <Link href='/affiliate/dashboard'>
             <Button>Save</Button>
           </Link>
         </BtnContainer>

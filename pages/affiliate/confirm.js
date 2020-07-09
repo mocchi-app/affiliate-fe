@@ -43,9 +43,11 @@ export default function ConfirmForm() {
       const data = await res.json();
       const { id_token } = data;
       // TODO: check if need to save token for a future
-      // if so - check the correct way to refresh it
-      // updateUserToken(id_token);
-      checkMe(id_token);
+      // if so - check the correct way to refresh it / implement Redux persist
+      updateUserToken(id_token);
+      await checkMe(id_token);
+      setCode('');
+      router.push('/affiliate/onboarding');
     } else {
       setLoading(false);
       console.log('error while providing Auth0 code confirm');
