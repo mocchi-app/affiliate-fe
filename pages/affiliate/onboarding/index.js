@@ -49,7 +49,7 @@ export default function Onboarding() {
 
         <PaymentSection>
           <Title className='title-payment'>Payment</Title>
-          <Link href='/affiliate/onboarding/payment'>
+          <Link href={'/affiliate/onboarding/payment'}>
             <Button className='payment'>Add Payment</Button>
           </Link>
         </PaymentSection>
@@ -59,7 +59,7 @@ export default function Onboarding() {
             <Button className='cancel'>Cancel</Button>
           </Link>
           {/* TODO: add handleSave and redirect */}
-          <Link href='/affiliate/dashboard'>
+          <Link href={'/affiliate/dashboard'}>
             <Button>Save</Button>
           </Link>
         </BtnContainer>

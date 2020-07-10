@@ -28,7 +28,7 @@ export default function Payment() {
             </Inputs>
           </CardDetails>
           <Input type='text' className='cardNumber' placeholder='Card Number' />
-          <Link href='/brand/sign-up/comission'>
+          <Link href={'/affiliate/dashboard'}>
             <Btn>Next</Btn>
           </Link>
         </Form>

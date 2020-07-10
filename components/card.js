@@ -1,66 +1,89 @@
 import styled from 'styled-components';
 import Link from 'next/link';
 
-const Card = ({ article }) => {
-  const imageUrl = article.image ? article.image.url : null;
-  const { price, brandName, description, btn, title, id, owner } = article;
-
+const Card = ({ name, description, price, img }) => {
   return (
-    <Link href={{ pathname: `/articles/${article.slug}` }}>
-      <ArticleCard>
-        <ImgContainer imageUrl={imageUrl}>
-          {/* <img src={imageUrl} alt={article.slug} /> */}
-        </ImgContainer>
-        <CardMeta>
-          <TopSection>
-            <FlexContainer>
-              <GiftName>{title || ' '}</GiftName>
-              {price && <Price>{price}</Price>}
-            </FlexContainer>
-            {brandName && <Brand>{brandName}</Brand>}
-            {description && (
-              <Description>
-                <>
-                  {description} <strong>Read More</strong>
-                </>
-              </Description>
-            )}
-          </TopSection>
-          <Container>
-            <OwnerInfo>
-              <img src='/images/giftOwnerIcon.png' alt='gift' />
-              <OwnerName>Jane Cooper</OwnerName>
-            </OwnerInfo>
-
-            <ViewListBtn>View List</ViewListBtn>
-          </Container>
-        </CardMeta>
-      </ArticleCard>
-    </Link>
+    // <Link href={{ pathname: `/gift/${gift.slug}` }}>
+    <GiftCard>
+      <ImgContainer imageUrl={img}>
+        {/* <img src={imageUrl} alt={article.slug} /> */}
+        <Overlay className='overlay'>
+          <DetailsLink><img src="/images/search.png" alt="details" /> Products Details</DetailsLink>
+          <AddToList><img src="/images/heart.png" alt="add to list" /> Add to List</AddToList>
+        </Overlay>
+      </ImgContainer>
+      <CardMeta>
+        <TopSection>
+          <FlexContainer>
+            <GiftName>{name || ''}</GiftName>
+            {price && <Price>{price}</Price>}
+          </FlexContainer>
+          {description && (
+            <Description>
+              <>{description}</>
+            </Description>
+          )}
+        </TopSection>
+      </CardMeta>
+    </GiftCard>
+    // </Link>
   );
 };
+
+const DetailsLink = styled.a`
+  color: #1e2e4f;
+  font-size: 18px;
+  font-family: 'Noto Sans TC', sans-serif;
+  padding: 16px 25px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 60px;
+  font-weight: bold;
+  width: 236px;
+  margin-bottom: 16px;
+  text-align: center;
+
+  img {
+    width: 16px;
+    height: 16px;
+    margin-right: 18px;
+  }
+`;
+
+const AddToList = styled(DetailsLink)`
+  background: none;
+  border: 2px solid #fff;
+  color: #fff;
+
+  img {
+    width: 20px;
+    height: 18px;
+    margin-right: 18px;
+  }
+`;
+
+const Overlay = styled.div`
+  background: linear-gradient(180deg, #949494 0%, rgba(0, 0, 0, 0) 100%);
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 const Description = styled.div`
   font-size: 12px;
   line-height: 16px;
   font-family: 'Noto Sans TC', sans-serif;
   color: #44516f;
-  margin-top: 12px;
+  margin-top: 5px;
+  margin-bottom: 50px;
 `;
 
 const TopSection = styled.div`
   margin-bottom: 14px;
-`;
-
-const Brand = styled.div`
-  color: #44516f;
-  text-transform: capitalize;
-  font-family: 'Noto Sans TC', sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 16px;
-  margin-top: 2px;
+  cursor: pointer;
 `;
 
 const Price = styled.span`
@@ -77,18 +100,23 @@ const FlexContainer = styled.div`
   justify-content: space-between;
 `;
 
-const ArticleCard = styled.div`
+const GiftCard = styled.div`
   width: 300px;
   border: 1px solid #e7e6e6;
   border-radius: 0px 0px 8px 8px;
   margin-bottom: 30px;
+
+  &:hover {
+    .overlay {
+      display: flex;
+    }
+  }
 `;
 
 const ImgContainer = styled.div`
-  /* width: 300px; */
   height: 300px;
   border-bottom: 1px solid #e7e6e6;
-  background-image: ${props => `url(${props.imageUrl})`};
+  background-image: ${(props) => `url(${props.imageUrl})`};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -96,7 +124,6 @@ const ImgContainer = styled.div`
 
 const CardMeta = styled.div`
   padding: 25px;
-  /* width: 300px; */
 `;
 
 const GiftName = styled.div`
@@ -106,23 +133,6 @@ const GiftName = styled.div`
   font-weight: bold;
   font-size: 18px;
   line-height: 25px;
-`;
-
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const OwnerInfo = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const OwnerName = styled.div`
-  margin-left: 13px;
-  font-size: 14px;
-  line-height: 19px;
-  font-family: 'Noto Sans TC', sans-serif;
 `;
 
 const ViewListBtn = styled.a`

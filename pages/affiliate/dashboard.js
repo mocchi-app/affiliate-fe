@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import Card from 'components/card';
 
-const gifts = new Array(7);
-
 const Dashboard = () => {
   return (
     <>
@@ -12,8 +10,16 @@ const Dashboard = () => {
         <img src='/images/search-white.png' alt='search' />
       </SearchContainer>
       <CardsContainer>
-        {gifts.map((gift, i) => {
-          return <Card gift={gift} key={i} />;
+        {Array.from(Array(9)).map((gift, i) => {
+          return (
+            <Card
+              name='Unicorn Earrings'
+              description='Birthday Gift for Daughter and Teen Girl'
+              price='14$'
+              img={'/images/earnings.jpg'}
+              key={i}
+            />
+          );
         })}
       </CardsContainer>
     </>
@@ -45,7 +51,7 @@ const SearchContainer = styled.div`
   }
 
   img {
-    background: #3FC1C9;
+    background: #3fc1c9;
     padding: 10px;
     border-radius: 50%;
     position: absolute;
@@ -59,10 +65,10 @@ const SearchContainer = styled.div`
 const Title = styled.h1`
   color: #1e2e4f;
   text-align: center;
-  font-size: 36px;
-  line-height: 49px;
+  font-size: 34px;
+  line-height: 62px;
   font-family: 'Noto Sans TC', sans-serif;
-  margin: 0 0 23px;
+  margin: 126px 0 40px;
   font-weight: bold;
 `;
 
@@ -71,7 +77,7 @@ const CardsContainer = styled.section`
   justify-content: space-evenly;
   flex-wrap: wrap;
   max-width: 80%;
-  margin: 0 auto 120px auto;
+  margin: 110px auto 120px auto;
 `;
 
 export default Dashboard;
