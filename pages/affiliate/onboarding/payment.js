@@ -6,7 +6,7 @@ export default function Payment() {
   return (
     <>
       <LogoContainer>
-        <img src='/images/logo_mocchi.png' alt='logo' />
+        <img src='/images/matchjet_logo.png' alt='logo' />
       </LogoContainer>
       <FormTitle>Add Payment</FormTitle>
       <Container>

@@ -5,7 +5,7 @@ export default function Onboarding() {
   return (
     <>
       <LogoContainer>
-        <img src='/images/logo_mocchi.png' alt='logo' />
+        <img src='/images/matchjet_logo.png' alt='logo' />
       </LogoContainer>
       <Container>
         <Title>Become a guide</Title>

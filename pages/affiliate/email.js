@@ -40,7 +40,7 @@ export default function PaymentForm() {
   return (
     <Container>
       <LogoContainer>
-        <img src='/images/logo_mocchi.png' alt='logo' />
+        <img src='/images/matchjet_logo.png' alt='logo' />
       </LogoContainer>
       {loading && <div>Loading....</div>}
       <Form onSubmit={handleSubmit}>

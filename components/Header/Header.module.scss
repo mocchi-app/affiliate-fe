@@ -6,9 +6,11 @@
   justify-content: space-between;
   padding: 25px 0 20px;
   font-family: 'Montserrat', sans-serif;
+  align-items: center;
 }
 
-.signInBtn {
+.signInBtn,
+.userName {
   margin: 0 42px 0 30px;
   font-style: normal;
   font-weight: bold;
@@ -16,6 +18,10 @@
   line-height: 24px;
   color: #1e2e4f;
   text-decoration: none;
+}
+
+.userName {
+  margin-right: 16px;
 }
 
 .signUpBtn {
@@ -40,7 +46,8 @@
   background-repeat: no-repeat;
   background-position: 160px center;
 
-  &:active, &:focus {
+  &:active,
+  &:focus {
     background-image: none;
   }
 }
