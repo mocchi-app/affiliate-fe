@@ -8,7 +8,7 @@ export default function Footer() {
         <div className={styles.menuItemLeft}>
           <ul className={stylesUtils.list}>
             <li>Brands</li>
-            <li>Affiliates</li>
+            <li>Influencers</li>
             <li>Contact</li>
           </ul>
           <ul className={stylesUtils.list}>
@@ -17,12 +17,12 @@ export default function Footer() {
           </ul>
         </div>
         <div className={styles.menuItemRight}>
-          <img className={styles.logo} src='/images/logo_mocchi_green.png' alt='logo' />
+          <img className={styles.logo} src='/images/matchjet_logo_colored.png' alt='logo' />
           <div className={styles.iconsSection}>
-            <img src='/images/fb-green.png' alt="facebook"/>
-            <img src="/images/twitter-green.png" alt="twitter"/>
-            <img src="/images/youtube-green.png" alt="youtube"/>
-            <img src="/images/ig-green.png" alt="instagram"/>
+            <img src='/images/fb-colored.png' alt="facebook"/>
+            <img src="/images/twitter-colored.png" alt="twitter"/>
+            <img src="/images/youtube-colored.png" alt="youtube"/>
+            <img src="/images/ig-colored.png" alt="instagram"/>
           </div>
         </div>
       </div>

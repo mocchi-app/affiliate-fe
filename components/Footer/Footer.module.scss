@@ -1,5 +1,5 @@
 .mainFooter {
-  background: #1e2e4f;
+  background: #364F6B;
 }
 
 .footerMenu {
@@ -35,7 +35,7 @@
   flex-direction: column;
   width: 50%;
   align-items: center;
-  padding-top: 80px;
+  padding-top: 106px;
 }
 
 .logo {
@@ -57,5 +57,6 @@
   font-weight: 400;
   padding: 12px 0;
   text-align: center;
-  background-color: #1c2b49;
+  // background-color: #1c2b49;
+  background: rgba(0, 0, 0, 0.08);
 }
