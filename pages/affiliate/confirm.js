@@ -22,7 +22,7 @@ export default function ConfirmForm() {
     });
 
     const data = await res.json();
-    console.log(data)
+    console.log(data);
   };
 
   const handleSubmit = async (e) => {
@@ -63,29 +63,44 @@ export default function ConfirmForm() {
       {loading && <div>Loading....</div>}
 
       <Form onSubmit={handleSubmit}>
-        <FormTitle>Provide auth code</FormTitle>
+        <FormTitle>Verify your email address</FormTitle>
+        <SubTitle>
+          To complete your profile and start using Matchjet, you’ll need
+          to verify your email address
+        </SubTitle>
         <Input
           placeholder='Paste your code'
           type='text'
           value={code}
           onChange={(e) => setCode(e.target.value)}
         />
-        <Button>Continue</Button>
+        <Button>Verify</Button>
       </Form>
     </Container>
   );
 }
 
+const SubTitle = styled.p`
+  font-size: 18px;
+  font-family: 'Noto Sans TC', sans-serif;
+  text-align: center;
+  color: #1e2e4f;
+  width: 80%;
+  margin: 0 0 45px;
+`;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 65px;
+  padding-top: 21px;
   align-items: center;
   color: #1e2e4f;
 `;
 
 const LogoContainer = styled.div`
-  margin-bottom: 40px;
+  width: 100%;
+  margin-left: 90px;
+  margin-bottom: 150px;
 `;
 
 const Form = styled.form`
@@ -98,6 +113,7 @@ const Form = styled.form`
   align-items: center;
   padding-top: 50px;
   padding-bottom: 50px;
+  margin-bottom: 100px;
 `;
 
 const FormTitle = styled.h2`
@@ -107,7 +123,7 @@ const FormTitle = styled.h2`
   font-weight: bold;
   font-size: 24px;
   line-height: 33px;
-  margin: 6px 0 41px;
+  margin: 6px 0 37px;
 `;
 
 const Input = styled.input`
@@ -135,15 +151,16 @@ const Button = styled.button`
   line-height: 26px;
   box-sizing: border-box;
   border-radius: 60px;
-  background: #42cb83;
+  background: #FC5185;
   color: #fff;
   width: 420px;
   text-align: center;
   margin-bottom: 76px;
   border: none;
   outline: none;
+  cursor: pointer;
 
   &:hover {
-    background: #3cbc79;
+    background: #db3165;
   }
 `;

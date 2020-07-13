@@ -19,6 +19,7 @@
 
     .sectionActionText {
       margin-bottom: 47px;
+      color: #1E2E4F;
     }
 
     .sectionTitle {
@@ -89,7 +90,6 @@
 
 // Get started section
 .getStartedSection {
-  background: #f0fdf3;
   padding: 100px 0 232px;
   display: flex;
   flex-direction: column;
@@ -106,8 +106,8 @@
 
 .getStarted {
   text-align: center;
-  width: 200px;
-  background: #00d489;
+  width: 220px;
+  background: #FC5185;
   color: #fff;
   box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.08);
   border-radius: 100px;

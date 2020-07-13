@@ -8,23 +8,13 @@ export default function Onboarding() {
         <img src='/images/matchjet_logo.png' alt='logo' />
       </LogoContainer>
       <Container>
-        <Title>Become a guide</Title>
+        <Title>Get started as a guide</Title>
         <SubTitle>
-          Copy and share links and earn 10% of every sale. Curate lists of your
-          favorite books and feature them on your profile page - build yur own,
-          personal bookshop. It’s easy
+          Own your recommendations and earn 20% of every sale. Recommend your
+          favorite products and share with friends or clients for access
+          anywhere, anytime.
         </SubTitle>
         <Form>
-          <Row>
-            <Label htmlFor='profession'>Profession</Label>
-            <Input type='text' id='profession' className='size-50' />
-          </Row>
-
-          <Row>
-            <Label htmlFor='about'>About</Label>
-            <TextArea id='about' className='size-100' rows='4' />
-          </Row>
-
           <Row className='file'>
             <Label htmlFor='image' className='fileLabel'>
               Set your profile image
@@ -39,6 +29,11 @@ export default function Onboarding() {
               accept='image/png, image/jpeg'
               className='file'
             />
+          </Row>
+
+          <Row>
+            <Label htmlFor='about'>About</Label>
+            <TextArea id='about' className='size-100' rows='4' />
           </Row>
 
           <Row>
@@ -60,7 +55,7 @@ export default function Onboarding() {
           </Link>
           {/* TODO: add handleSave and redirect */}
           <Link href={'/affiliate/dashboard'}>
-            <Button>Save</Button>
+            <Button className='save'>Save</Button>
           </Link>
         </BtnContainer>
       </Container>
@@ -69,7 +64,7 @@ export default function Onboarding() {
 }
 
 const PaymentSection = styled.div`
-  padding-bottom: 400px;
+  padding-bottom: 60px;
   border-bottom: 1px solid #eef1f2;
   width: 100%;
 `;
@@ -85,7 +80,7 @@ const BtnContainer = styled.div`
 const Button = styled.a`
   text-align: center;
   width: auto;
-  background: #00d489;
+  background: #fc5185;
   color: #fff;
   box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.08);
   border-radius: 100px;
@@ -104,6 +99,10 @@ const Button = styled.a`
   &.payment {
     width: 327px;
     padding: 13px 120px;
+
+    &:hover {
+      background: #db3165;
+    }
   }
 
   &.cancel {
@@ -111,6 +110,12 @@ const Button = styled.a`
     color: #979eac;
     border: 1px solid #979eac;
     margin-right: 32px;
+  }
+
+  &.save {
+    &:hover {
+      background: #db3165;
+    }
   }
 `;
 
@@ -232,7 +237,7 @@ const Title = styled.h1`
 `;
 
 const LogoContainer = styled.div`
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -240,7 +245,7 @@ const LogoContainer = styled.div`
 `;
 
 const Container = styled.div`
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

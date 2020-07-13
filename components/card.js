@@ -1,15 +1,26 @@
-import styled from 'styled-components';
 import Link from 'next/link';
+import { useState } from 'react';
+import styled from 'styled-components';
+
+import DetailsModal from 'components/DetailsModal';
 
 const Card = ({ name, description, price, img }) => {
+  const [detailsOpen, setDetailsOpen] = useState(false);
+
   return (
     // <Link href={{ pathname: `/gift/${gift.slug}` }}>
     <GiftCard>
       <ImgContainer imageUrl={img}>
         {/* <img src={imageUrl} alt={article.slug} /> */}
         <Overlay className='overlay'>
-          <DetailsLink><img src="/images/search.png" alt="details" /> Products Details</DetailsLink>
-          <AddToList><img src="/images/heart.png" alt="add to list" /> Add to List</AddToList>
+          <DetailsLink onClick={() => setDetailsOpen(true)}>
+            <img src='/images/search.png' alt='details' />
+            Products Details
+          </DetailsLink>
+          <AddToList>
+            <img src='/images/heart.png' alt='add to list' />
+            Add to List
+          </AddToList>
         </Overlay>
       </ImgContainer>
       <CardMeta>
@@ -26,6 +37,7 @@ const Card = ({ name, description, price, img }) => {
         </TopSection>
       </CardMeta>
     </GiftCard>
+    
     // </Link>
   );
 };

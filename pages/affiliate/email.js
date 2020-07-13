@@ -28,6 +28,7 @@ export default function PaymentForm() {
     });
 
     if (res.ok) {
+      console.log('HERE')
       setLoading(false);
       updateEmail(userEmail);
       router.push('/affiliate/confirm');
@@ -60,13 +61,16 @@ export default function PaymentForm() {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 65px;
+  padding-top: 37px;
   align-items: center;
   color: #1e2e4f;
 `;
 
 const LogoContainer = styled.div`
   margin-bottom: 40px;
+  width: 100%;
+  margin-left: 90px;
+  margin-bottom: 150px;
 `;
 
 const Form = styled.form`
@@ -79,6 +83,7 @@ const Form = styled.form`
   align-items: center;
   padding-top: 50px;
   padding-bottom: 50px;
+  margin-bottom: 68px;
 `;
 
 const FormTitle = styled.h2`
@@ -116,15 +121,16 @@ const Button = styled.button`
   line-height: 26px;
   box-sizing: border-box;
   border-radius: 60px;
-  background: #42cb83;
+  background: #FC5185;
   color: #fff;
   width: 420px;
   text-align: center;
   margin-bottom: 76px;
   border: none;
   outline: none;
+  cursor: pointer;
 
   &:hover {
-    background: #3cbc79;
+    background: #db3165;
   }
 `;

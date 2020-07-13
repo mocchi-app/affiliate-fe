@@ -8,7 +8,7 @@ export default function Payment() {
       <LogoContainer>
         <img src='/images/matchjet_logo.png' alt='logo' />
       </LogoContainer>
-      <FormTitle>Add Payment</FormTitle>
+      <FormTitle>Connect Account</FormTitle>
       <Container>
         <Form>
           <Input type='text' placeholder='Card Owner' />
@@ -88,7 +88,7 @@ const CardDetails = styled.div`
     font-weight: 500;
     font-size: 14px;
     line-height: 19px;
-    color: #267dff;
+    color: #3FC1C9;
     margin-right: 35px;
     cursor: pointer;
 
@@ -97,7 +97,7 @@ const CardDetails = styled.div`
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      border: 2px solid #267dff;
+      border: 2px solid #3FC1C9;
       margin-right: 10px;
       cursor: pointer;
     }
@@ -132,12 +132,13 @@ const Input = styled.input`
   width: 100%;
   padding: 15px 20px;
   color: #267dff;
-  font-weight: 500;
   font-family: 'Noto Sans TC', sans-serif;
   font-style: normal;
   font-size: 14px;
   line-height: 18px;
   margin-bottom: 24px;
+  color: #3fc1c9;
+  font-weight: 500;
 
   &.cardNumber {
     background-image: url('/images/visa.png');
@@ -155,14 +156,14 @@ const Btn = styled.a`
   font-size: 18px;
   line-height: 26px;
   box-sizing: border-box;
-  border-radius: 8px;
-  background: #42cb83;
+  border-radius: 76px;
+  background: #FC5185;
   color: #fff;
   width: 100%;
   text-align: center;
   display: block;
 
   &:hover {
-    background: #3cbc79;
+    background: #db3165;
   }
 `;

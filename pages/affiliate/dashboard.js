@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Card from 'components/card';
+import DetailsModal from 'components/DetailsModal';
 
 const Dashboard = () => {
   return (
@@ -22,6 +23,7 @@ const Dashboard = () => {
           );
         })}
       </CardsContainer>
+      <DetailsModal />
     </>
   );
 };

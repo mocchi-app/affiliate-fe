@@ -34,13 +34,13 @@ export default function AffiliatePage() {
             <div className={styles.imgContainer}>
               <img src='/images/gift.png' alt='' />
             </div>
-            <p className={styles.desc}>Build gift guides, earn money.</p>
+            <p className={styles.desc}>Review products from brands.</p>
           </div>
           <div className={styles.card}>
             <div className={styles.imgContainer}>
               <img src='/images/link.png' alt='' />
             </div>
-            <p className={styles.desc}>Share links to gifts you love.</p>
+            <p className={styles.desc}>Share the products you love.</p>
           </div>
           <div className={styles.card}>
             <div className={styles.imgContainer}>
