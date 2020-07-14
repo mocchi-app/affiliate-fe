@@ -11,7 +11,7 @@ export default function AddProductModal() {
   return (
     <BgModal
       isOpen={addProductModalIsOpen}
-      onClick={() => setAddProductModal(false)}
+      // onClick={() => setAddProductModal(false)}
     >
       <ModalContent>
         <Header>
@@ -31,6 +31,15 @@ export default function AddProductModal() {
           <Label htmlFor='video' />
           <InputFile type='file' id='video' accept='video/*' className='file' />
         </div>
+        <div>
+          <Select>
+            <option disabled>+ Add Contacts</option>
+            <option value=''>Name 1</option>
+            <option value=''>Name 2</option>
+            <option value=''>Name 3</option>
+            <option value=''>Name 4</option>
+          </Select>
+        </div>
         <Buttons>
           <Button className='cancel' onClick={() => setAddProductModal(false)}>
             Cancel
@@ -42,6 +51,24 @@ export default function AddProductModal() {
     </BgModal>
   );
 }
+
+const Select = styled.select`
+  width: 100%;
+  margin-top: 14px;
+  border: none;
+  outline: none;
+  border-radius: 60px;
+  padding: 15px 24px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  color: #44516f;
+  background: url('/images/polygon.png') center right no-repeat #f4f9ff;
+`;
 
 const Label = styled.label`
   display: block;
@@ -71,7 +98,7 @@ const Label = styled.label`
 `;
 
 const InputFile = styled.input`
-  visibility: hidden;
+  display: none;
 `;
 
 const Question = styled.h4`
@@ -93,8 +120,7 @@ const TextArea = styled.textarea`
   font-weight: 500;
   font-size: 14px;
   line-height: 19px;
-  margin-bottom: 24px;
-  margin-top: 15px;
+  margin-bottom: 15px;
   width: 100%;
   resize: none;
   border-radius: 16px;
@@ -132,8 +158,8 @@ const SubTitle = styled.h3`
 
 const Close = styled.div`
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 34px;
+  top: 40px;
   width: 14px;
   height: 14px;
   cursor: pointer;
@@ -186,17 +212,22 @@ const Title = styled.h1`
   margin: 0 0 8px 40px;
 `;
 
-const Buttons = styled.div``;
+const Buttons = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+`;
 
 const ModalContent = styled.div`
   width: 670px;
-  height: 550px;
+  height: 600px;
   background: #fff;
   padding: 30px 43px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 210px;
-  /* margin-top: calc(100vh - 210px); */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const BgModal = styled.div`
@@ -207,5 +238,4 @@ const BgModal = styled.div`
   top: 0;
   left: 0;
   display: ${(props) => (props.isOpen ? 'flex' : 'none')};
-  justify-content: center;
 `;

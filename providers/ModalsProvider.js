@@ -7,7 +7,7 @@ export const ModalsContext = React.createContext({
 
 export default function ModalsProvider({ children }) {
   const [detailsModalIsOpen, setDetailsModal] = useState(false);
-  const [addProductModalIsOpen, setAddProductModal] = useState(true);
+  const [addProductModalIsOpen, setAddProductModal] = useState(false);
 
   return (
     <ModalsContext.Provider

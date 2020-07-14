@@ -50,7 +50,7 @@ export default function Onboarding() {
         </PaymentSection>
 
         <BtnContainer>
-          <Link href='/affiliate'>
+          <Link href='/'>
             <Button className='cancel'>Cancel</Button>
           </Link>
           {/* TODO: add handleSave and redirect */}

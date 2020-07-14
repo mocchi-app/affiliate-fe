@@ -7,7 +7,10 @@ export default function DetailsModal() {
   const { detailsModalIsOpen, setDetailsModal } = useContext(ModalsContext);
 
   return (
-    <BgModal isOpen={detailsModalIsOpen} onClick={() => setDetailsModal(false)}>
+    <BgModal 
+      isOpen={detailsModalIsOpen} 
+      // onClick={() => setDetailsModal(false)}
+    >
       <ModalContent>
         <ImgContainer>
           <img src='/images/product-img.png' alt='' />
@@ -135,9 +138,11 @@ const ModalContent = styled.div`
   height: 350px;
   background: #fff;
   padding: 32px;
+  position: fixed;
   display: flex;
-  margin-top: 210px;
-  /* margin-top: calc(100vh - 210px); */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const BgModal = styled.div`
