@@ -25,8 +25,6 @@ function Layout({ children, router }) {
     .map((page) => pathname.includes(page))
     .every((path) => !path);
 
-  const isPayment = pathname.includes('payment');
-
   return (
     <Container>
       {showHeaeder && <Header />}
@@ -40,8 +38,9 @@ function Layout({ children, router }) {
 
 const Container = styled.div`
   display: flex;
-  min-height: 100vh;
+  min-height: 100%;
   flex-direction: column;
+  position: relative;
 
   main {
     flex: 1;

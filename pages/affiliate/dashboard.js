@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import Card from 'components/card';
+
 import DetailsModal from 'components/DetailsModal';
+import AddProductModal from 'components/AddProductModal';
 
 const Dashboard = () => {
   return (
@@ -24,6 +26,7 @@ const Dashboard = () => {
         })}
       </CardsContainer>
       <DetailsModal />
+      <AddProductModal />
     </>
   );
 };

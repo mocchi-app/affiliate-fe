@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
 
-import DetailsModal from 'components/DetailsModal';
+import { ModalsContext } from '../providers/ModalsProvider';
 
 const Card = ({ name, description, price, img }) => {
-  const [detailsOpen, setDetailsOpen] = useState(false);
+  const { setDetailsModal, setAddProductModal } = useContext(ModalsContext);
 
   return (
     // <Link href={{ pathname: `/gift/${gift.slug}` }}>
@@ -13,11 +13,11 @@ const Card = ({ name, description, price, img }) => {
       <ImgContainer imageUrl={img}>
         {/* <img src={imageUrl} alt={article.slug} /> */}
         <Overlay className='overlay'>
-          <DetailsLink onClick={() => setDetailsOpen(true)}>
+          <DetailsLink onClick={() => setDetailsModal(true)}>
             <img src='/images/search.png' alt='details' />
             Products Details
           </DetailsLink>
-          <AddToList>
+          <AddToList onClick={() => setAddProductModal(true)}>
             <img src='/images/heart.png' alt='add to list' />
             Add to List
           </AddToList>
