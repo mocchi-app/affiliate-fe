@@ -1,0 +1,29 @@
+Affiliate project
+Features to implement
+1. Sign in flow
+2. Connect "onboarding" page/form with backend
+3. Connect "Payment form" with backend
+4. Get actual gists list from the backend for "Add Recommendations" page
+   - Implement "Search" for this page
+
+5. Retrieve actual recommendations list from the backend for "My Recommendations"
+6. Add functionality for a menu, once clicked on a user avatar (Header), - once backend is ready for this
+7. Get live values from the backend for "My Earnings" page. Once backend is ready.
+8. "Product details" modal - add ability to add Product
+9. "Add Recommendation" modal - add functionality for saving recommendation. Once backend is ready.
+    
+Brands project
+Features to implement
+1. Sign in for app members
+2. Add / Remove products - once backend is ready.
+3. Add functionality for a menu, once clicked on a user avatar (Header), - once backend is ready for this
+   ** this can be replicated from the previous project, or vice versa
+
+
+Home project
+1. Add Search for the Header on the main page
+2. Implement Sign in f-ty for app members
+3. Implement Sign up for a new user.
+4. Add functionality when user click "Buy" (redirect, etc) on Articles page.
+5. Implement "User Ask pop-up"
+6. Add real data from the backend to "Influencer page"

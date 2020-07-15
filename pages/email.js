@@ -3,54 +3,38 @@ import { useState, useContext } from 'react';
 import styled from 'styled-components';
 import fetch from 'isomorphic-unfetch';
 
-import { UserContext } from '../../providers/UserProvider';
+import { UserContext } from '../providers/UserProvider';
 
-export default function ConfirmForm() {
+export default function PaymentForm() {
   const router = useRouter();
+  const { updateEmail } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
-  const [code, setCode] = useState('');
-  const { userEmail, updateUserToken } = useContext(UserContext);
-
-  console.log('EMAIL:', userEmail);
-
-  const checkMe = async (token) => {
-    const res = await fetch('/api/v1/influencer/me', {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    const data = await res.json();
-    console.log(data);
-  };
+  const [userEmail, setUserEmail] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('/oauth/token', {
+    setLoading(true);
+
+    const res = await fetch('/passwordless/start', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: userEmail,
-        otp: code,
-        realm: 'email',
+        connection: 'email',
+        email: userEmail,
+        send: 'code',
       }),
     });
 
     if (res.ok) {
-      const data = await res.json();
-      const { id_token } = data;
-      // TODO: check if need to save token for a future
-      // if so - check the correct way to refresh it / implement Redux persist
-      updateUserToken(id_token);
-      await checkMe(id_token);
-      setCode('');
-      router.push('/affiliate/onboarding');
+      console.log('HERE')
+      setLoading(false);
+      updateEmail(userEmail);
+      router.push('/confirm');
     } else {
       setLoading(false);
-      console.log('error while providing Auth0 code confirm');
+      console.log('Error while sending email', res.statusText);
     }
   };
 
@@ -59,45 +43,31 @@ export default function ConfirmForm() {
       <LogoContainer>
         <img src='/images/matchjet_logo.png' alt='logo' />
       </LogoContainer>
-
       {loading && <div>Loading....</div>}
-
       <Form onSubmit={handleSubmit}>
-        <FormTitle>Verify your email address</FormTitle>
-        <SubTitle>
-          To complete your profile and start using Matchjet, you’ll need
-          to verify your email address
-        </SubTitle>
+        <FormTitle>Sign in with email</FormTitle>
         <Input
-          placeholder='Paste your code'
-          type='text'
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
+          placeholder='Email Address'
+          type='email'
+          value={userEmail}
+          onChange={(e) => setUserEmail(e.target.value)}
         />
-        <Button>Verify</Button>
+        <Button>Continue</Button>
       </Form>
     </Container>
   );
 }
 
-const SubTitle = styled.p`
-  font-size: 18px;
-  font-family: 'Noto Sans TC', sans-serif;
-  text-align: center;
-  color: #1e2e4f;
-  width: 80%;
-  margin: 0 0 45px;
-`;
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 21px;
+  padding-top: 37px;
   align-items: center;
   color: #1e2e4f;
 `;
 
 const LogoContainer = styled.div`
+  margin-bottom: 40px;
   width: 100%;
   margin-left: 90px;
   margin-bottom: 150px;
@@ -113,7 +83,7 @@ const Form = styled.form`
   align-items: center;
   padding-top: 50px;
   padding-bottom: 50px;
-  margin-bottom: 100px;
+  margin-bottom: 68px;
 `;
 
 const FormTitle = styled.h2`
@@ -123,7 +93,7 @@ const FormTitle = styled.h2`
   font-weight: bold;
   font-size: 24px;
   line-height: 33px;
-  margin: 6px 0 37px;
+  margin: 6px 0 41px;
 `;
 
 const Input = styled.input`

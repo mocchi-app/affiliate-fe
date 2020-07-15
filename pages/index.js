@@ -17,7 +17,7 @@ export default function AffiliatePage() {
           <p className={styles.sectionActionText}>
           Review brands you love, earn money.
           </p>
-          <Link href='/affiliate/onboarding'>
+          <Link href='/onboarding'>
             <a className={styles.getStarted}>Get Started</a>
           </Link>
         </div>
@@ -57,7 +57,7 @@ export default function AffiliatePage() {
         <p className={styles.sectionActionText}>
           Share gift guides, earn money.
         </p>
-        <Link href='/affiliate/onboarding'>
+        <Link href='/onboarding'>
           <a className={styles.getStarted}>Get Started</a>
         </Link>
       </section>

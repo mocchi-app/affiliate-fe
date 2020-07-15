@@ -1,11 +1,16 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import styled from 'styled-components';
 
 import { ModalsContext } from '../providers/ModalsProvider';
 
 const Card = ({ name, description, price, img }) => {
+  const router = useRouter();
+  const isRecommendationsPage = router.pathname.indexOf('recommendations');
   const { setDetailsModal, setAddProductModal } = useContext(ModalsContext);
+
+  console.log('isRecommendationsPage', isRecommendationsPage);
 
   return (
     // <Link href={{ pathname: `/gift/${gift.slug}` }}>
@@ -19,7 +24,7 @@ const Card = ({ name, description, price, img }) => {
           </DetailsLink>
           <AddToList onClick={() => setAddProductModal(true)}>
             <img src='/images/heart.png' alt='add to list' />
-            Add to List
+            {isRecommendationsPage > 0 ? 'Added' : 'Add to List'}
           </AddToList>
         </Overlay>
       </ImgContainer>
@@ -37,7 +42,7 @@ const Card = ({ name, description, price, img }) => {
         </TopSection>
       </CardMeta>
     </GiftCard>
-    
+
     // </Link>
   );
 };

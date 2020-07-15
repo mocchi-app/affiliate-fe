@@ -33,7 +33,7 @@ export default function AddProductModal() {
         </div>
         <div>
           <Select>
-            <option disabled>+ Add Contacts</option>
+            <option defaultValue>+ Add Contacts</option>
             <option value=''>Name 1</option>
             <option value=''>Name 2</option>
             <option value=''>Name 3</option>

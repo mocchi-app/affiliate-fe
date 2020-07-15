@@ -8,14 +8,8 @@ function Layout({ children, router }) {
   console.log('router: ', router);
   const { pathname } = router;
 
-  const withNoHeader = [
-    'onboarding',
-    'email',
-    'confirm'
-  ];
-  const withNoFooter = [
-    'payment',
-  ];
+  const withNoHeader = ['onboarding', 'email', 'confirm'];
+  const withNoFooter = ['payment'];
 
   const showHeaeder = withNoHeader
     .map((page) => pathname.includes(page))
@@ -38,7 +32,8 @@ function Layout({ children, router }) {
 
 const Container = styled.div`
   display: flex;
-  min-height: 100%;
+  height: 100%;
+  min-height: 100vh;
   flex-direction: column;
   position: relative;
 

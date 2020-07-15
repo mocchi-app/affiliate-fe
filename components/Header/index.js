@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import styles from './Header.module.scss';
 
 const signupLinks = {
-  affiliate: '/affiliate/email',
+  affiliate: '/email',
 };
 
 const Header = ({ router }) => {
@@ -69,7 +69,7 @@ const Header = ({ router }) => {
             <img src='/images/list.png' alt='list' />
             Add Recs+
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => router.push('/recommendations')}>
             <img src='/images/plus-circle-blue.png' alt='plus' />
             My Recs
           </MenuItem>
@@ -85,7 +85,9 @@ const Header = ({ router }) => {
           <img src='/images/matchjet_logo.png' alt='logo' />
           <>
             {recommendBtn}
-            <a>Earnings</a>
+            <Link href='/earnings'>
+              <a>Earnings</a>
+            </Link>
           </>
         </SectionLeft>
         <SectionRight>
@@ -197,7 +199,7 @@ const RecommendSection = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-`
+`;
 
 const UserSection = styled.div`
   position: relative;
@@ -209,6 +211,10 @@ const UserSection = styled.div`
 const SectionLeft = styled.div`
   display: flex;
   align-items: center;
+
+  img {
+    cursor: pointer;
+  }
 
   a {
     color: #1e2e4f;
