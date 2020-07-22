@@ -1,41 +1,41 @@
-import { useRouter } from 'next/router';
-import { useState, useContext } from 'react';
-import styled from 'styled-components';
-import fetch from 'isomorphic-unfetch';
+import { useRouter } from "next/router";
+import { useState, useContext } from "react";
+import styled from "styled-components";
+import fetch from "isomorphic-unfetch";
 
-import { UserContext } from '../providers/UserProvider';
+import { UserContext } from "../providers/UserProvider";
 
 export default function ConfirmForm() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState("");
   const { userEmail, updateUserToken } = useContext(UserContext);
 
-  console.log('EMAIL:', userEmail);
+  console.log("EMAIL:", userEmail);
 
   const checkMe = async (token) => {
-    const res = await fetch('/api/v1/influencer/me', {
-      method: 'GET',
+    const res = await fetch("/api/v1/influencer/me", {
+      method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
 
     const data = await res.json();
-    console.log(data);
+    console.log(data, "checkMe");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('/oauth/token', {
-      method: 'POST',
+    const res = await fetch("/oauth/token", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         username: userEmail,
         otp: code,
-        realm: 'email',
+        realm: "email",
       }),
     });
 
@@ -46,18 +46,18 @@ export default function ConfirmForm() {
       // if so - check the correct way to refresh it / implement Redux persist
       updateUserToken(id_token);
       await checkMe(id_token);
-      setCode('');
-      router.push('/onboarding');
+      setCode("");
+      router.push("/onboarding");
     } else {
       setLoading(false);
-      console.log('error while providing Auth0 code confirm');
+      console.log("error while providing Auth0 code confirm");
     }
   };
 
   return (
     <Container>
       <LogoContainer>
-        <img src='/images/matchjet_logo.png' alt='logo' />
+        <img src="/images/matchjet_logo.png" alt="logo" />
       </LogoContainer>
 
       {loading && <div>Loading....</div>}
@@ -65,12 +65,12 @@ export default function ConfirmForm() {
       <Form onSubmit={handleSubmit}>
         <FormTitle>Verify your email address</FormTitle>
         <SubTitle>
-          To complete your profile and start using Matchjet, you’ll need
-          to verify your email address
+          To complete your profile and start using Matchjet, you’ll need to
+          verify your email address
         </SubTitle>
         <Input
-          placeholder='Paste your code'
-          type='text'
+          placeholder="Paste your code"
+          type="text"
           value={code}
           onChange={(e) => setCode(e.target.value)}
         />
@@ -82,7 +82,7 @@ export default function ConfirmForm() {
 
 const SubTitle = styled.p`
   font-size: 18px;
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
   text-align: center;
   color: #1e2e4f;
   width: 80%;
@@ -118,7 +118,7 @@ const Form = styled.form`
 
 const FormTitle = styled.h2`
   color: #1e2e4f;
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
@@ -134,7 +134,7 @@ const Input = styled.input`
   width: 415px;
   padding: 15px 20px;
   color: #44516f;
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -144,14 +144,14 @@ const Input = styled.input`
 
 const Button = styled.button`
   padding: 14px 63px;
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
   line-height: 26px;
   box-sizing: border-box;
   border-radius: 60px;
-  background: #FC5185;
+  background: #fc5185;
   color: #fff;
   width: 420px;
   text-align: center;

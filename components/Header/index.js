@@ -1,12 +1,12 @@
-import Link from 'next/link';
-import { withRouter } from 'next/router';
-import { useState } from 'react';
-import styled from 'styled-components';
+import Link from "next/link";
+import { withRouter } from "next/router";
+import { useState } from "react";
+import styled from "styled-components";
 
-import styles from './Header.module.scss';
+import styles from "./Header.module.scss";
 
 const signupLinks = {
-  affiliate: '/email',
+  affiliate: "/email",
 };
 
 const Header = ({ router }) => {
@@ -29,7 +29,7 @@ const Header = ({ router }) => {
     return;
   };
 
-  const isHomePage = router.route === '/';
+  const isHomePage = router.route === "/";
 
   const userSection = (
     <UserSection>
@@ -38,39 +38,39 @@ const Header = ({ router }) => {
         {isUserMenuOpen && (
           <Menu>
             <MenuItem>
-              <img src='/images/settings.png' alt='settings' /> Account Settings
+              <img src="/images/settings.png" alt="settings" /> Account Settings
             </MenuItem>
             <MenuItem>
-              <img src='/images/credit-card.png' alt='credit-card' /> Billing
+              <img src="/images/credit-card.png" alt="credit-card" /> Billing
             </MenuItem>
             <MenuItem>
-              <img src='/images/log-out.png' alt='log-out' /> Log Out
+              <img src="/images/log-out.png" alt="log-out" /> Log Out
             </MenuItem>
             <MenuItem>
-              <img src='/images/help-circle.png' alt='help-circle' /> Help
+              <img src="/images/help-circle.png" alt="help-circle" /> Help
             </MenuItem>
           </Menu>
         )}
       </UserName>
       <Img>
-        <img src='/images/avatar.png' alt='user' />
+        <img src="/images/avatar.png" alt="user" />
       </Img>
     </UserSection>
   );
 
   const recommendBtn = (
     <RecommendSection>
-      <a className='recommend' onClick={toggleRecommend}>
+      <a className="recommend" onClick={toggleRecommend}>
         Recommend ▴
       </a>
       {isRecommendOpen && (
         <RecMenu>
           <MenuItem>
-            <img src='/images/list.png' alt='list' />
+            <img src="/images/list.png" alt="list" />
             Add Recs+
           </MenuItem>
-          <MenuItem onClick={() => router.push('/recommendations')}>
-            <img src='/images/plus-circle-blue.png' alt='plus' />
+          <MenuItem onClick={() => router.push("/recommendations")}>
+            <img src="/images/plus-circle-blue.png" alt="plus" />
             My Recs
           </MenuItem>
         </RecMenu>
@@ -82,10 +82,10 @@ const Header = ({ router }) => {
     return (
       <header className={styles.topHeader}>
         <SectionLeft>
-          <img src='/images/matchjet_logo.png' alt='logo' />
+          <img src="/images/matchjet_logo.png" alt="logo" />
           <>
             {recommendBtn}
-            <Link href='/earnings'>
+            <Link href="/earnings">
               <a>Earnings</a>
             </Link>
           </>
@@ -105,11 +105,11 @@ const Header = ({ router }) => {
   return (
     <header className={styles.topHeader}>
       <SectionLeft>
-        <img src='/images/matchjet_logo.png' alt='logo' />
+        <img src="/images/matchjet_logo.png" alt="logo" />
       </SectionLeft>
       <SectionRight>
         <>
-          <Link href='/sign-in'>
+          <Link href="/email">
             <a className={styles.signInBtn}>Sign In</a>
           </Link>
           <a onClick={handleSignUp} className={styles.signUpBtn}>
@@ -153,7 +153,7 @@ const RecMenu = styled(Menu)`
 `;
 
 const MenuItem = styled.div`
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
@@ -172,7 +172,7 @@ const MenuItem = styled.div`
 `;
 
 const UserName = styled.div`
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 24px;
@@ -182,7 +182,7 @@ const UserName = styled.div`
   cursor: pointer;
 
   &:after {
-    content: '';
+    content: "";
     width: 0;
     height: 0;
     border-style: solid;

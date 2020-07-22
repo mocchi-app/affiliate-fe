@@ -1,26 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://giftjet.co/confirm</loc>
+  </url>
+
+  <url>
+    <loc>https://giftjet.co/dashboard</loc>
+  </url>
+
+  <url>
+    <loc>https://giftjet.co/earnings</loc>
+  </url>
+
+  <url>
+    <loc>https://giftjet.co/email</loc>
+  </url>
+
+  <url>
     <loc>https://giftjet.co</loc>
   </url>
 
   <url>
-    <loc>https://giftjet.co/affiliate/confirm</loc>
+    <loc>https://giftjet.co/recommendations</loc>
   </url>
 
   <url>
-    <loc>https://giftjet.co/affiliate/dashboard</loc>
+    <loc>https://giftjet.co/onboarding/index</loc>
   </url>
 
   <url>
-    <loc>https://giftjet.co/affiliate/email</loc>
-  </url>
-
-  <url>
-    <loc>https://giftjet.co/affiliate/onboarding/index</loc>
-  </url>
-
-  <url>
-    <loc>https://giftjet.co/affiliate/onboarding/payment</loc>
+    <loc>https://giftjet.co/onboarding/payment</loc>
   </url>
 </urlset>
