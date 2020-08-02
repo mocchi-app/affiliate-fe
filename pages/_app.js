@@ -11,6 +11,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 import "../assets/css/style.css";
 import "../styles/global.scss";
+import 'antd/dist/antd.css';
 
 const stripePromise = loadStripe(
   "pk_test_51GumODF2EEnSfY8Kt4gnTKubjgNr3sDgfCP6BPa6ae1tHQFU1B6Xztbbkau0AL2oW4ynh7TqIlN0jVxdcPXjMcsf00TIM8ENaH"
