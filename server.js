@@ -26,6 +26,20 @@ const devProxy = {
     },
     changeOrigin: true,
   },
+  '/api/v1/influencer/profile': {
+    target: 'http://64.225.118.43:8090',
+    pathRewrite: {
+      '^/api/v1/influencer/me': '/api/v1/influencer/me',
+    },
+    changeOrigin: true,
+  },
+  '/api/v1/influencer/image': {
+    target: 'http://64.225.118.43:8090',
+    pathRewrite: {
+      '^/api/v1/influencer/me': '/api/v1/influencer/me',
+    },
+    changeOrigin: true,
+  },
 };
 
 const port = parseInt(process.env.PORT, 10) || 3000;
