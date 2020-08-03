@@ -10,6 +10,7 @@ export const UserContext = React.createContext({
 export default function UserProvider({ children }) {
   const [userToken, setUserToken] = useState(null);
   const [userEmail, setUserEmail] = useState(null);
+  const [userImage, setUserImage] = useState(null);
   const [detailsModalIsOpen, setDetailsModal] = useState(false);
   const router = useRouter();
 
@@ -23,6 +24,10 @@ export default function UserProvider({ children }) {
     console.log('UPDATED!!!')
     setUserEmail(newValue);
   };
+
+  const updateUserImage = (image) => {
+    setUserImage(image);
+  }
 
   useEffect(() => {
     if (!SignUpUrls.includes(router.pathname) && !userToken) {
@@ -39,7 +44,9 @@ export default function UserProvider({ children }) {
         userEmail,
         updateEmail,
         detailsModalIsOpen,
-        setDetailsModal
+        setDetailsModal,
+        userImage,
+        updateUserImage,
       }}
     >
       {children}

@@ -1,10 +1,36 @@
 import styled from 'styled-components';
+import { useEffect, useContext } from 'react';
 import Card from 'components/card';
+import fetch from "isomorphic-unfetch";
 
+import { UserContext } from 'providers/UserProvider';
 import DetailsModal from 'components/DetailsModal';
 import AddProductModal from 'components/AddProductModal';
 
 const Dashboard = () => {
+  const { userToken, updateUserImage } = useContext(UserContext);
+
+  const getProfileImage = async () => {
+    const res = await fetch("/api/v1/influencer/image", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    });
+
+    if (res.ok) {
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob)
+      updateUserImage(url)
+    } else {
+      return [];
+    }
+  }
+
+  useEffect(() => {
+    getProfileImage();
+  }, [])
+
   return (
     <>
       <Title>Add Recommendations</Title>

@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { withRouter } from "next/router";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
+
+import { UserContext } from 'providers/UserProvider';
 
 import styles from "./Header.module.scss";
 
@@ -12,6 +14,7 @@ const signupLinks = {
 const Header = ({ router }) => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isRecommendOpen, setIsRecommendOpen] = useState(false);
+  const { userImage } = useContext(UserContext)
 
   const toggle = (e) => {
     e.preventDefault();
@@ -53,7 +56,7 @@ const Header = ({ router }) => {
         )}
       </UserName>
       <Img>
-        <img src="/images/avatar.png" alt="user" />
+        <img src={userImage ? userImage : "/images/avatar.png"} alt="user" />
       </Img>
     </UserSection>
   );

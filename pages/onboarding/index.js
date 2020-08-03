@@ -83,8 +83,8 @@ export default function Onboarding() {
           message: 'Successfully, saved.',
           description: 'Profile data was successfully saved',
         })
+        router.push('/dashboard')
       }
-      // router.push('dashboard')
     } else {
       notification.open({
         message: 'Lack of information',
@@ -131,12 +131,12 @@ export default function Onboarding() {
           </Row>
         </Form>
 
-        <PaymentSection>
+        {/* <PaymentSection>
           <Title className='title-payment'>Payment</Title>
           <Link href={'/onboarding/payment'}>
             <Button className='payment'>Add Payment</Button>
           </Link>
-        </PaymentSection>
+        </PaymentSection> */}
 
         <BtnContainer>
           <Link href='/'>
