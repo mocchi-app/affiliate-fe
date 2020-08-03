@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 export const UserContext = React.createContext({
   userToken: null,
@@ -10,6 +11,9 @@ export default function UserProvider({ children }) {
   const [userToken, setUserToken] = useState(null);
   const [userEmail, setUserEmail] = useState(null);
   const [detailsModalIsOpen, setDetailsModal] = useState(false);
+  const router = useRouter();
+
+  const SignUpUrls =  ['/', '/email']
 
   const updateUserToken = (token) => {
     setUserToken(token);
@@ -19,6 +23,13 @@ export default function UserProvider({ children }) {
     console.log('UPDATED!!!')
     setUserEmail(newValue);
   };
+
+  useEffect(() => {
+    if (!SignUpUrls.includes(router.pathname) && !userToken) {
+      router.push('/email');
+    }
+    return () => {}
+  }, [userToken])
 
   return (
     <UserContext.Provider

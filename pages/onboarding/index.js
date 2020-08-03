@@ -42,31 +42,48 @@ export default function Onboarding() {
 
   const handleSave = async () => {
     const isValid = checkValidation()
-    console.log('#$%: userToken = ', userToken)
     if (isValid.success) {
+      let requests = []
       // first, save profile image
       const formData = new FormData();
       formData.append("file", profileImage)
-      let res = await fetch("/api/v1/influencer/image", {
+      requests.push(fetch("/api/v1/influencer/image", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
         body: formData,
-      });
-      console.log('#$%: image res = ', res)
+      }));
+      
       // Next, save about and location info
-      res = await fetch("/api/v1/influencer/profile", {
+      requests.push(fetch("/api/v1/influencer/profile", {
         method: "PUT",
         headers: {
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${userToken}`,
         },
         body: JSON.stringify({
           about,
           location
         })
-      });
-      console.log('#$%: profile res = ', res)
+      }));
+      let results = await Promise.all(requests)
+      if (results[0].status != 200) {
+        notification.open({
+          message: 'Profile image upload failed',
+          description: 'Uploading profile image was failed',
+        })
+      } else if (results[1].status != 200) {
+        notification.open({
+          message: 'Profile data upload failed',
+          description: 'Uploading profile data was failed',
+        })
+      } else {
+        notification.open({
+          message: 'Successfully, saved.',
+          description: 'Profile data was successfully saved',
+        })
+      }
       // router.push('dashboard')
     } else {
       notification.open({
