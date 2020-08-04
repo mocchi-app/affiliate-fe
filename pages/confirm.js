@@ -34,7 +34,7 @@ export default function ConfirmForm() {
       },
       body: JSON.stringify({
         username: userEmail,
-        otp: code,
+        otp: code.replace(/\s/g, ''),
         realm: "email",
       }),
     });

@@ -1,7 +1,98 @@
 import Link from 'next/link';
+import { useState, useContext } from 'react'
+import { useRouter } from 'next/router';
+import fetch from "isomorphic-unfetch";
 import styled from 'styled-components';
+import { notification } from 'antd';
+import { UserContext } from '../../providers/UserProvider';
 
 export default function Onboarding() {
+  const [filename, setFilename] = useState('This will appear on your shop. Images 180pxby 180px will work best!')
+  const [profileImage, setProfileImage] = useState(null)
+  const [about, setAbout] = useState('')
+  const [location, setLocation] = useState('')
+  const router = useRouter()
+  const { userToken } = useContext(UserContext);
+
+  const uploadProfileImage = event => {
+    setFilename(event.target.files[0].name)
+    setProfileImage(event.target.files[0])
+  }
+
+  const checkValidation = () => {
+    let res = {
+      success: true,
+      error: ''
+    }
+
+    if (!about) {
+      res = {
+        success: false,
+        error: 'Please type the about'
+      }
+    } else if (!location) {
+      res = {
+        success: false,
+        error: 'Please type the location'
+      }
+    }
+
+    return res
+  }
+
+  const handleSave = async () => {
+    const isValid = checkValidation()
+    if (isValid.success) {
+      let requests = []
+      // first, save profile image
+      const formData = new FormData();
+      formData.append("file", profileImage)
+      requests.push(fetch("/api/v1/influencer/image", {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+        body: formData,
+      }));
+      
+      // Next, save about and location info
+      requests.push(fetch("/api/v1/influencer/profile", {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`,
+        },
+        body: JSON.stringify({
+          about,
+          location
+        })
+      }));
+      let results = await Promise.all(requests)
+      if (results[0].status != 200) {
+        notification.open({
+          message: 'Profile image upload failed',
+          description: 'Uploading profile image was failed',
+        })
+      } else if (results[1].status != 200) {
+        notification.open({
+          message: 'Profile data upload failed',
+          description: 'Uploading profile data was failed',
+        })
+      } else {
+        notification.open({
+          message: 'Successfully, saved.',
+          description: 'Profile data was successfully saved',
+        })
+        router.push('/dashboard')
+      }
+    } else {
+      notification.open({
+        message: 'Lack of information',
+        description: isValid.error,
+      })
+    }
+  }
+
   return (
     <>
       <LogoContainer>
@@ -19,26 +110,24 @@ export default function Onboarding() {
             <Label htmlFor='image' className='fileLabel'>
               Set your profile image
             </Label>
-            <SubTitle>
-              This will appear on your shop. Images 180pxby 180px will work
-              best!
-            </SubTitle>
+            <SubTitle>{filename}</SubTitle>
             <Input
               type='file'
               id='image'
               accept='image/png, image/jpeg'
               className='file'
+              onChange={uploadProfileImage}
             />
           </Row>
 
           <Row>
             <Label htmlFor='about'>About</Label>
-            <TextArea id='about' className='size-100' rows='4' />
+            <TextArea id='about' className='size-100' rows='4' onChange={e => setAbout(e.target.value)} />
           </Row>
 
           <Row>
             <Label htmlFor='location'>Location</Label>
-            <Input type='text' id='location' className='size-50' />
+            <Input type='text' id='location' className='size-50' onChange={e => setLocation(e.target.value)} />
           </Row>
         </Form>
 
@@ -54,9 +143,7 @@ export default function Onboarding() {
             <Button className='cancel'>Cancel</Button>
           </Link>
           {/* TODO: add handleSave and redirect */}
-          <Link href={'/dashboard'}>
-            <Button className='save'>Save</Button>
-          </Link>
+          <Button className='save' onClick={handleSave}>Save</Button>
         </BtnContainer>
       </Container>
     </>

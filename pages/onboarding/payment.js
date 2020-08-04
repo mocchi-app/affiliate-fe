@@ -54,7 +54,7 @@ export default function Payment() {
             </Inputs>
           </CardDetails>
           <Input type="text" className="cardNumber" placeholder="Card Number" />
-          <Link href={"/dashboard"}>
+          <Link href={"/onboarding"}>
             <Btn>Next</Btn>
           </Link>
         </Form>
