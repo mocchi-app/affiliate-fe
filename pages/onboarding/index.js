@@ -131,12 +131,12 @@ export default function Onboarding() {
           </Row>
         </Form>
 
-        {/* <PaymentSection>
+        <PaymentSection>
           <Title className='title-payment'>Payment</Title>
           <Link href={'/onboarding/payment'}>
             <Button className='payment'>Add Payment</Button>
           </Link>
-        </PaymentSection> */}
+        </PaymentSection>
 
         <BtnContainer>
           <Link href='/'>
