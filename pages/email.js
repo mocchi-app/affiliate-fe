@@ -3,6 +3,7 @@ import { useState, useContext } from 'react';
 import styled from 'styled-components';
 import fetch from 'isomorphic-unfetch';
 
+import { INTERNAL_LINKS } from 'enum';
 import { UserContext } from '../providers/UserProvider';
 
 export default function PaymentForm() {
@@ -38,10 +39,15 @@ export default function PaymentForm() {
     }
   };
 
+  const goToHomePage = (e) => {
+    e.preventDefault();
+    router.push(INTERNAL_LINKS.HOME)
+  }
+
   return (
     <Container>
       <LogoContainer>
-        <img src='/images/matchjet_logo.png' alt='logo' />
+        <img src='/images/guideshop-logo.svg' alt='logo' onClick={goToHomePage} />
       </LogoContainer>
       {loading && <div>Loading....</div>}
       <Form onSubmit={handleSubmit}>
@@ -71,6 +77,13 @@ const LogoContainer = styled.div`
   width: 100%;
   margin-left: 90px;
   margin-bottom: 150px;
+  height: 25px;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+  }
 `;
 
 const Form = styled.form`
