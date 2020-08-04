@@ -1,14 +1,21 @@
 import { useState, useEffect, useContext } from "react";
 
 import Link from "next/link";
+import { useRouter } from 'next/router';
 import styled from "styled-components";
 import fetch from "isomorphic-unfetch";
 import { UserContext } from "../../providers/UserProvider";
+import { INTERNAL_LINKS } from 'enum';
 
 export default function Payment() {
   const { userToken, userEmail } = useContext(UserContext);
-
+  const router = useRouter()
   console.log("userToken:", userToken);
+
+  const goToHomePage = (e) => {
+    e.preventDefault();
+    router.push(INTERNAL_LINKS.HOME)
+  }
 
   const getQQ = async () => {
     const res = await fetch("/api/v1/stripe/init", {
@@ -32,7 +39,7 @@ export default function Payment() {
   return (
     <>
       <LogoContainer>
-        <img src="/images/matchjet_logo.png" alt="logo" />
+        <img src="/images/guideshop-logo.svg" alt="logo" onClick={goToHomePage} />
       </LogoContainer>
       <FormTitle>Connect Account</FormTitle>
       <Container>
@@ -85,6 +92,13 @@ const LogoContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 25px 0 20px;
+  height: 25px;
+
+  img {
+    height: 25px;
+    object-fit: cover;
+    cursor: pointer;
+  }
 `;
 
 const CardDetails = styled.div`
@@ -190,6 +204,6 @@ const Btn = styled.a`
   display: block;
 
   &:hover {
-    background: #db3165;
+    color: #fff;
   }
 `;
