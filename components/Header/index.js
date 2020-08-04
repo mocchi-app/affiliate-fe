@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import styled from "styled-components";
 
 import { UserContext } from 'providers/UserProvider';
+import { INTERNAL_LINKS } from 'enum';
 
 import styles from "./Header.module.scss";
 
@@ -31,6 +32,11 @@ const Header = ({ router }) => {
     router.push(signupLinks.affiliate);
     return;
   };
+
+  const goToHomePage = (e) => {
+    e.preventDefault();
+    router.push(INTERNAL_LINKS.HOME)
+  }
 
   const isHomePage = router.route === "/";
 
@@ -85,7 +91,9 @@ const Header = ({ router }) => {
     return (
       <header className={styles.topHeader}>
         <SectionLeft>
-          <img src="/images/matchjet_logo.png" alt="logo" />
+          <div className="img-wrapper">
+            <img src="/images/guideshop-logo.svg" alt="logo" onClick={goToHomePage} />
+          </div>
           <>
             {recommendBtn}
             <Link href="/earnings">
@@ -108,7 +116,9 @@ const Header = ({ router }) => {
   return (
     <header className={styles.topHeader}>
       <SectionLeft>
-        <img src="/images/matchjet_logo.png" alt="logo" />
+        <div className="img-wrapper">
+          <img src="/images/guideshop-logo.svg" alt="logo" onClick={goToHomePage} />
+        </div>
       </SectionLeft>
       <SectionRight>
         <>
@@ -214,9 +224,16 @@ const UserSection = styled.div`
 const SectionLeft = styled.div`
   display: flex;
   align-items: center;
+  height: 25px;
 
-  img {
-    cursor: pointer;
+  .img-wrapper {
+    height: 25px;    
+
+    img {
+      cursor: pointer;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   a {
