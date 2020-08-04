@@ -5,6 +5,7 @@ import fetch from "isomorphic-unfetch";
 import styled from 'styled-components';
 import { notification } from 'antd';
 import { UserContext } from '../../providers/UserProvider';
+import { INTERNAL_LINKS } from 'enum';
 
 export default function Onboarding() {
   const [filename, setFilename] = useState('This will appear on your shop. Images 180pxby 180px will work best!')
@@ -93,10 +94,15 @@ export default function Onboarding() {
     }
   }
 
+  const goToHomePage = (e) => {
+    e.preventDefault();
+    router.push(INTERNAL_LINKS.HOME)
+  }
+
   return (
     <>
       <LogoContainer>
-        <img src='/images/matchjet_logo.png' alt='logo' />
+        <img src='/images/guideshop-logo.svg' alt='logo' onClick={goToHomePage} />
       </LogoContainer>
       <Container>
         <Title>Get started as a guide</Title>
@@ -181,15 +187,12 @@ const Button = styled.a`
 
   &:hover {
     text-decoration: none;
+    color: #fff;
   }
 
   &.payment {
     width: 327px;
     padding: 13px 120px;
-
-    &:hover {
-      background: #db3165;
-    }
   }
 
   &.cancel {
@@ -197,12 +200,6 @@ const Button = styled.a`
     color: #979eac;
     border: 1px solid #979eac;
     margin-right: 32px;
-  }
-
-  &.save {
-    &:hover {
-      background: #db3165;
-    }
   }
 `;
 
@@ -329,6 +326,13 @@ const LogoContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 25px 0 20px;
+  height: 25px;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+  }
 `;
 
 const Container = styled.div`

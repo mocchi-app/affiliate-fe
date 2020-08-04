@@ -144,6 +144,6 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: #db3165;
+    background: #2fc3ff;
   }
 `;
