@@ -51,7 +51,7 @@ const Close = styled.div`
 const Button = styled.a`
   text-align: center;
   width: auto;
-  background: #fc5185;
+  background: #2fc3ff;
   color: #fff;
   box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.08);
   border-radius: 100px;
