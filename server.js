@@ -55,7 +55,9 @@ app
     const server = express();
 
     // if (dev && devProxy) {
+    console.log('#$%: devProxy = ', devProxy)
     if (devProxy) {
+      console.log('#$%: redirecting to ', devProxy)
       Object.keys(devProxy).forEach(function (context) {
         server.use(createProxyMiddleware(context, devProxy[context]));
       });

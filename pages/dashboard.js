@@ -22,8 +22,6 @@ const Dashboard = () => {
       const blob = await res.blob();
       const url = window.URL.createObjectURL(blob)
       updateUserImage(url)
-    } else {
-      return [];
     }
   }
 
