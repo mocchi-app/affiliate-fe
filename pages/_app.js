@@ -26,7 +26,7 @@ class MyApp extends App {
           <Elements stripe={stripePromise}>
             <Layout>
               <Head>
-                <title>GiftJet</title>
+                <title>Affiliate</title>
                 <meta
                   name="viewport"
                   content="initial-scale=1.0, width=device-width"
