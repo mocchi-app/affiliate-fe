@@ -52,7 +52,7 @@ export default function AffiliatePage() {
       <section className={styles.getStartedSection}>
         <h1 className={styles.sectionTitle}>Get started</h1>
         <p className={styles.sectionActionText}>
-          Share gift guides, earn money.
+          Share products you love, earn money.
         </p>
         <Link href='/onboarding'>
           <a className={styles.getStarted}>Get Started</a>
