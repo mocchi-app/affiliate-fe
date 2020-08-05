@@ -5,6 +5,7 @@ import fetch from "isomorphic-unfetch";
 
 import { INTERNAL_LINKS } from 'enum';
 import { UserContext } from "../providers/UserProvider";
+import { notification } from 'antd';
 
 export default function ConfirmForm() {
   const router = useRouter();
@@ -15,7 +16,9 @@ export default function ConfirmForm() {
   console.log("EMAIL:", userEmail);
 
   const checkMe = async (token) => {
-    const res = await fetch("/api/v1/influencer/me", {
+    const production = process.env.NODE_ENV == 'production';
+    const url = production ? `${process.env.API_AFFILIATE}/api/v1/influencer/me` : '/api/v1/influencer/me'
+    const res = await fetch(url, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -28,7 +31,14 @@ export default function ConfirmForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("/oauth/token", {
+    if (!code.trim()) {
+      notification.open({
+        message: 'Warning',
+        description: 'Please paste your code',
+      })
+      return
+    }
+    const res = await fetch(`${process.env.API_AFFILIATE}/oauth/token`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
