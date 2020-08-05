@@ -1,5 +1,5 @@
 .mainFooter {
-  background: #364F6B;
+  background: #1E2E4F;
 }
 
 .footerMenu {
@@ -32,13 +32,10 @@
 .menuItemRight {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 50%;
   align-items: center;
   padding-top: 106px;
-}
-
-.logo {
-  margin-bottom: 25px;
 }
 
 .iconsSection {
