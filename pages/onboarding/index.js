@@ -102,7 +102,7 @@ export default function Onboarding() {
   return (
     <>
       <LogoContainer>
-        <img src='/images/guideshop-logo.svg' alt='logo' onClick={goToHomePage} />
+        <img src='/images/guideshop-logo.png' alt='logo' onClick={goToHomePage} />
       </LogoContainer>
       <Container>
         <Title>Get started as a guide</Title>
@@ -329,7 +329,7 @@ const LogoContainer = styled.div`
   height: 25px;
 
   img {
-    height: 100%;
+    height: 25px;
     object-fit: cover;
     cursor: pointer;
   }

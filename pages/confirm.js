@@ -63,7 +63,7 @@ export default function ConfirmForm() {
   return (
     <Container>
       <LogoContainer>
-        <img src="/images/guideshop-logo.svg" alt="logo" onClick={goToHomePage} />
+        <img src="/images/guideshop-logo.png" alt="logo" onClick={goToHomePage} />
       </LogoContainer>
 
       {loading && <div>Loading....</div>}
