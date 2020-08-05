@@ -21,9 +21,6 @@ export default function AffiliatePage() {
             <a className={styles.getStarted}>Get Started</a>
           </Link>
         </div>
-        <div className={styles.image}>
-          <img src='/images/bg-card.png' alt='promo' />
-        </div>
       </section>
 
       {/* How it works */}
@@ -32,19 +29,19 @@ export default function AffiliatePage() {
         <div className={styles.cards}>
           <div className={styles.card}>
             <div className={styles.imgContainer}>
-              <img src='/images/gift.png' alt='' />
+              <img src='/images/inventory.png' alt='' />
             </div>
             <p className={styles.desc}>Review products from brands.</p>
           </div>
           <div className={styles.card}>
             <div className={styles.imgContainer}>
-              <img src='/images/link.png' alt='' />
+              <img src='/images/shoppable.png' alt='' />
             </div>
             <p className={styles.desc}>Share the products you love.</p>
           </div>
           <div className={styles.card}>
             <div className={styles.imgContainer}>
-              <img src='/images/dollar-sign.png' alt='' />
+              <img src='/images/order.png' alt='' />
             </div>
             <p className={styles.desc}>Earn 10% from brands on each sale.</p>
           </div>
@@ -55,7 +52,7 @@ export default function AffiliatePage() {
       <section className={styles.getStartedSection}>
         <h1 className={styles.sectionTitle}>Get started</h1>
         <p className={styles.sectionActionText}>
-          Share gift guides, earn money.
+          Share products you love, earn money.
         </p>
         <Link href='/onboarding'>
           <a className={styles.getStarted}>Get Started</a>

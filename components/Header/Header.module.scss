@@ -25,13 +25,17 @@
 }
 
 .signUpBtn {
-  background: #FC5185;;
+  background: #2fc3ff;
   border: 2px solid #fff;
   font-size: 14px;
   border-radius: 100px;
   color: #fff;
   padding: 7px 20px;
   font-weight: bold;
+
+  &:hover {
+    color: #fff;
+  }
 }
 
 .searchField {

@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import styled from "styled-components";
 import fetch from "isomorphic-unfetch";
 
+import { INTERNAL_LINKS } from 'enum';
 import { UserContext } from "../providers/UserProvider";
 
 export default function ConfirmForm() {
@@ -54,10 +55,15 @@ export default function ConfirmForm() {
     }
   };
 
+  const goToHomePage = (e) => {
+    e.preventDefault();
+    router.push(INTERNAL_LINKS.HOME)
+  }
+
   return (
     <Container>
       <LogoContainer>
-        <img src="/images/matchjet_logo.png" alt="logo" />
+        <img src="/images/guideshop-logo.png" alt="logo" onClick={goToHomePage} />
       </LogoContainer>
 
       {loading && <div>Loading....</div>}
@@ -101,6 +107,13 @@ const LogoContainer = styled.div`
   width: 100%;
   margin-left: 90px;
   margin-bottom: 150px;
+  height: 25px;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+  }
 `;
 
 const Form = styled.form`
@@ -151,7 +164,7 @@ const Button = styled.button`
   line-height: 26px;
   box-sizing: border-box;
   border-radius: 60px;
-  background: #fc5185;
+  background: #2fc3ff;
   color: #fff;
   width: 420px;
   text-align: center;
@@ -161,6 +174,6 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: #db3165;
+    background: #2fc3ff;
   }
 `;
