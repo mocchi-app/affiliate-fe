@@ -21,9 +21,6 @@ export default function AffiliatePage() {
             <a className={styles.getStarted}>Get Started</a>
           </Link>
         </div>
-        <div className={styles.image}>
-          <img src='/images/bg-card.png' alt='promo' />
-        </div>
       </section>
 
       {/* How it works */}

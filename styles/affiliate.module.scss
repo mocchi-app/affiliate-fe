@@ -4,7 +4,10 @@
 .mainPromo {
   display: flex;
   width: 85%;
+  height: 634px;
   margin-left: auto;
+  background: no-repeat url('/images/bg-card-1.png');
+  background-position: right;
 
   .text {
     min-width: 50%;
