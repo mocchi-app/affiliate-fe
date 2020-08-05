@@ -16,7 +16,7 @@ export default function PaymentForm() {
     e.preventDefault();
     setLoading(true);
 
-    const res = await fetch('/passwordless/start', {
+    const res = await fetch(`${process.env.API_AFFILIATE}/passwordless/start`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

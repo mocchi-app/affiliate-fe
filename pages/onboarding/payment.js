@@ -18,7 +18,7 @@ export default function Payment() {
   }
 
   const getQQ = async () => {
-    const res = await fetch("/api/v1/stripe/init", {
+    const res = await fetch(`${process.env.API_AFFILIATE}/api/v1/stripe/init`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${userToken}`,

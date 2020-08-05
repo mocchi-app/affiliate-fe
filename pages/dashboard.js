@@ -11,7 +11,7 @@ const Dashboard = () => {
   const { userToken, updateUserImage } = useContext(UserContext);
 
   const getProfileImage = async () => {
-    const res = await fetch("/api/v1/influencer/image", {
+    const res = await fetch(`${process.env.API_AFFILIATE}/api/v1/influencer/image`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${userToken}`,

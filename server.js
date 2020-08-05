@@ -46,7 +46,6 @@ const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({
   dev,
-  devProxy,
 });
 const handle = app.getRequestHandler();
 
@@ -55,10 +54,7 @@ app
   .then(() => {
     const server = express();
 
-    // if (dev && devProxy) {
-    console.log('#$%: devProxy = ', devProxy)
     if (devProxy) {
-      console.log('#$%: redirecting to ', devProxy)
       Object.keys(devProxy).forEach(function (context) {
         server.use(createProxyMiddleware(context, devProxy[context]));
       });
