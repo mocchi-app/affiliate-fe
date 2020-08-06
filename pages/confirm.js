@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import styled from "styled-components";
 import fetch from "isomorphic-unfetch";
 
+import Spinner from 'components/spinner';
 import { INTERNAL_LINKS } from 'enum';
 import { UserContext } from "../providers/UserProvider";
 import { notification } from 'antd';
@@ -38,6 +39,7 @@ export default function ConfirmForm() {
       })
       return
     }
+    setLoading(true)
     const res = await fetch(`${process.env.API_AFFILIATE}/oauth/token`, {
       method: "POST",
       headers: {
@@ -60,9 +62,13 @@ export default function ConfirmForm() {
       setCode("");
       router.push("/onboarding");
     } else {
-      setLoading(false);
       console.log("error while providing Auth0 code confirm");
+      notification.open({
+        message: 'Error',
+        description: 'Error while providing Auth0 code confirm',
+      })
     }
+    setLoading(false);
   };
 
   const goToHomePage = (e) => {
@@ -75,9 +81,14 @@ export default function ConfirmForm() {
       <LogoContainer>
         <img src="/images/guideshop-logo.png" alt="logo" onClick={goToHomePage} />
       </LogoContainer>
-
-      {loading && <div>Loading....</div>}
-
+      {loading && (
+        <>
+          <SpinContainer>
+            <Spinner />
+          </SpinContainer>
+          <Overlay></Overlay>
+        </>
+      )}
       <Form onSubmit={handleSubmit}>
         <FormTitle>Verify your email address</FormTitle>
         <SubTitle>
@@ -111,6 +122,7 @@ const Container = styled.div`
   padding-top: 21px;
   align-items: center;
   color: #1e2e4f;
+  position: relative;
 `;
 
 const LogoContainer = styled.div`
@@ -186,4 +198,25 @@ const Button = styled.button`
   &:hover {
     background: #2fc3ff;
   }
+`;
+
+const SpinContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const Overlay = styled.div`
+  background: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.6;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
