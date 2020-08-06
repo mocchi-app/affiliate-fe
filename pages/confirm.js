@@ -14,8 +14,6 @@ export default function ConfirmForm() {
   const [code, setCode] = useState("");
   const { userEmail, updateUserToken } = useContext(UserContext);
 
-  console.log("EMAIL:", userEmail);
-
   const checkMe = async (token) => {
     const production = process.env.NODE_ENV == 'production';
     const url = production ? `${process.env.API_AFFILIATE}/api/v1/influencer/me` : '/api/v1/influencer/me'
@@ -24,6 +22,7 @@ export default function ConfirmForm() {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      credentials: 'include',
     });
 
     const data = await res.json();
