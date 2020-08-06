@@ -21,6 +21,7 @@ const Dashboard = () => {
       headers: {
         Authorization: `Bearer ${userToken}`,
       },
+      credentials: 'include',
     });
 
     if (res.ok) {

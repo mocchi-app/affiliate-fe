@@ -58,6 +58,7 @@ export default function Onboarding() {
           Authorization: `Bearer ${userToken}`,
         },
         body: formData,
+        credentials: 'include',
       }));
       
       // Next, save about and location info
@@ -70,7 +71,8 @@ export default function Onboarding() {
         body: JSON.stringify({
           about,
           location
-        })
+        }),
+        credentials: 'include',
       }));
       let results = await Promise.all(requests)
       if (results[0].status != 200) {
