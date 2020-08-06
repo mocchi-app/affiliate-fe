@@ -31,7 +31,7 @@ export default function UserProvider({ children }) {
 
   useEffect(() => {
     if (!SignUpUrls.includes(router.pathname) && !userToken) {
-      router.push('/email');
+      // router.push('/email');
     }
     return () => {}
   }, [userToken])
