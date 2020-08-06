@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 import fetch from "isomorphic-unfetch";
 import styled from 'styled-components';
 import { notification } from 'antd';
+
+import Spinner from 'components/spinner';
 import { UserContext } from '../../providers/UserProvider';
 import { INTERNAL_LINKS } from 'enum';
 
@@ -14,6 +16,7 @@ export default function Onboarding() {
   const [location, setLocation] = useState('')
   const router = useRouter()
   const { userToken } = useContext(UserContext);
+  const [loading, setLoading] = useState(false);
 
   const uploadProfileImage = event => {
     setFilename(event.target.files[0].name)
@@ -44,6 +47,7 @@ export default function Onboarding() {
   const handleSave = async () => {
     const isValid = checkValidation()
     if (isValid.success) {
+      setLoading(true)
       let requests = []
       // first, save profile image
       const formData = new FormData();
@@ -86,6 +90,7 @@ export default function Onboarding() {
         })
         router.push('/dashboard')
       }
+      setLoading(false)
     } else {
       notification.open({
         message: 'Lack of information',
@@ -104,6 +109,14 @@ export default function Onboarding() {
       <LogoContainer>
         <img src='/images/guideshop-logo.png' alt='logo' onClick={goToHomePage} />
       </LogoContainer>
+      {loading && (
+        <>
+          <SpinContainer>
+            <Spinner />
+          </SpinContainer>
+          <Overlay></Overlay>
+        </>
+      )}
       <Container>
         <Title>Get started as a guide</Title>
         <SubTitle>
@@ -343,4 +356,25 @@ const Container = styled.div`
   margin-top: 80px;
   align-items: flex-start;
   color: #1e2e4f;
+`;
+
+const SpinContainer = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const Overlay = styled.div`
+  background: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.6;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;

@@ -2,7 +2,9 @@ import { useRouter } from 'next/router';
 import { useState, useContext } from 'react';
 import styled from 'styled-components';
 import fetch from 'isomorphic-unfetch';
+import { notification } from 'antd';
 
+import Spinner from 'components/spinner';
 import { INTERNAL_LINKS } from 'enum';
 import { UserContext } from '../providers/UserProvider';
 
@@ -14,6 +16,13 @@ export default function PaymentForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!userEmail.trim()) {
+      notification.open({
+        message: 'Warning',
+        description: 'Please type your email address',
+      })
+      return
+    }
     setLoading(true);
 
     const res = await fetch(`${process.env.API_AFFILIATE}/passwordless/start`, {
@@ -30,13 +39,16 @@ export default function PaymentForm() {
 
     if (res.ok) {
       console.log('HERE')
-      setLoading(false);
       updateEmail(userEmail);
       router.push('/confirm');
-    } else {
-      setLoading(false);
+      } else {
       console.log('Error while sending email', res.statusText);
+      notification.open({
+        message: 'Failed',
+        description: 'Error while sending email', 
+      })
     }
+    setLoading(false);
   };
 
   const goToHomePage = (e) => {
@@ -49,7 +61,14 @@ export default function PaymentForm() {
       <LogoContainer>
         <img src='/images/guideshop-logo.png' alt='logo' onClick={goToHomePage} />
       </LogoContainer>
-      {loading && <div>Loading....</div>}
+      {loading && (
+        <>
+          <SpinContainer>
+            <Spinner />
+          </SpinContainer>
+          <Overlay></Overlay>
+        </>
+      )}
       <Form onSubmit={handleSubmit}>
         <FormTitle>Sign in with email</FormTitle>
         <Input
@@ -70,6 +89,7 @@ const Container = styled.div`
   padding-top: 37px;
   align-items: center;
   color: #1e2e4f;
+  position: relative;
 `;
 
 const LogoContainer = styled.div`
@@ -146,4 +166,25 @@ const Button = styled.button`
   &:hover {
     background: #2fc3ff;
   }
+`;
+
+const SpinContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const Overlay = styled.div`
+  background: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.6;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
