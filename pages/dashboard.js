@@ -14,7 +14,9 @@ const Dashboard = () => {
 
   const getProfileImage = async () => {
     setLoading(true)
-    const res = await fetch(`${process.env.API_AFFILIATE}/api/v1/influencer/image`, {
+    const production = process.env.NODE_ENV == 'production';
+    const url = production ? `${process.env.API_AFFILIATE}/api/v1/influencer/image` : '/api/v1/influencer/image'
+    const res = await fetch(url, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${userToken}`,
