@@ -92,7 +92,7 @@ const Header = ({ router }) => {
       <header className={styles.topHeader}>
         <SectionLeft>
           <div className="img-wrapper">
-            <img src="/images/guideshop-logo.png" alt="logo" onClick={goToHomePage} />
+            <img src="/images/guideshop-logo.svg" alt="logo" onClick={goToHomePage} />
           </div>
           <>
             {recommendBtn}
@@ -117,7 +117,7 @@ const Header = ({ router }) => {
     <header className={styles.topHeader}>
       <SectionLeft>
         <div className="img-wrapper">
-          <img src="/images/guideshop-logo.png" alt="logo" onClick={goToHomePage} />
+          <img src="/images/guideshop-logo.svg" alt="logo" onClick={goToHomePage} />
         </div>
       </SectionLeft>
       <SectionRight>

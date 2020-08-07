@@ -60,7 +60,7 @@ export default function Payment() {
   return (
     <>
       <LogoContainer>
-        <img src="/images/guideshop-logo.png" alt="logo" onClick={goToHomePage} />
+        <img src="/images/guideshop-logo.svg" alt="logo" onClick={goToHomePage} />
       </LogoContainer>
       <FormTitle>Choose a Package</FormTitle>
       <FormDesc>Explore some of the best tips from around the city from our partners and friends.</FormDesc>
